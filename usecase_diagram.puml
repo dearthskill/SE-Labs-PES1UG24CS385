@@ -1,0 +1,43 @@
+@startuml vaccination_usecase
+
+skinparam actorStyle awesome
+skinparam usecase {
+  BackgroundColor White
+  BorderColor DarkSlateGray
+  ArrowColor DarkSlateGray
+}
+skinparam rectangle {
+  BorderStyle dashed
+  BorderColor Gray
+}
+
+left to right direction
+
+actor "Citizen Registrant"   as Citizen
+actor "Vaccination Officer"  as Officer
+
+rectangle "Vaccination Cohort & Dose Scheduling System" {
+
+  usecase "UC-01\nRegister citizen profile"          as UC1
+  usecase "UC-02\nBook vaccination slot"             as UC2
+  usecase "UC-03\nValidate dose interval"            as UC3
+  usecase "UC-04\nBrowse & search available slots"   as UC4
+  usecase "UC-05\nEnable slot availability\nnotification" as UC5
+  usecase "UC-06\nRecord dose administration"        as UC6
+  usecase "UC-07\nGenerate QR certificate"           as UC7
+
+  UC2 .> UC3 : «include»
+  UC5 .> UC4 : «extend»
+  UC6 --> UC7
+
+}
+
+Citizen --> UC1
+Citizen --> UC2
+Citizen --> UC4
+Citizen --> UC7
+
+Officer --> UC6
+Officer --> UC7
+
+@enduml
