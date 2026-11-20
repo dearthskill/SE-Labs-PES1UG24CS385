@@ -1,0 +1,454 @@
+$ python -m pytest test_gym_membership.py -v
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.2.0, pluggy-1.7.0 -- /Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/.venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7
+plugins: hypothesis-6.170.15
+collecting ... collected 12 items
+
+test_gym_membership.py::test_parse_plan_no_crash FAILED                  [  8%]
+test_gym_membership.py::test_parse_plan_any_type_no_crash FAILED         [ 16%]
+test_gym_membership.py::test_parse_plan_near_valid FAILED                [ 25%]
+test_gym_membership.py::test_parse_plan_round_trip PASSED                [ 33%]
+test_gym_membership.py::test_calculate_bmi_no_crash FAILED               [ 41%]
+test_gym_membership.py::test_calculate_bmi_any_type_no_crash FAILED      [ 50%]
+test_gym_membership.py::test_calculate_bmi_extreme_numbers FAILED        [ 58%]
+test_gym_membership.py::test_calculate_bmi_matches_formula PASSED        [ 66%]
+test_gym_membership.py::test_average_workout_no_crash FAILED             [ 75%]
+test_gym_membership.py::test_average_workout_any_type_no_crash FAILED    [ 83%]
+test_gym_membership.py::test_average_workout_integer_lists FAILED        [ 91%]
+test_gym_membership.py::test_average_workout_bounds PASSED               [100%]
+
+=================================== FAILURES ===================================
+___________________________ test_parse_plan_no_crash ___________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 28, in test_parse_plan_no_crash
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/.venv/lib/python3.11/site-packages/hypothesis/core.py", line 1730, in _raise_to_user
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 3 distinct failures in explicit examples. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 37, in test_parse_plan_no_crash
+    |     check_plan_result(parse_plan(s))
+    |                       ^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 2, in parse_plan
+    |     plan, months = code.split('-')
+    |                    ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing explicit example: test_parse_plan_no_crash(
+    |     s=None,
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 37, in test_parse_plan_no_crash
+    |     check_plan_result(parse_plan(s))
+    |                       ^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 2, in parse_plan
+    |     plan, months = code.split('-')
+    |     ^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | (note: 3 other explicit examples also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_parse_plan_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 37, in test_parse_plan_no_crash
+    |     check_plan_result(parse_plan(s))
+    |                       ^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 3, in parse_plan
+    |     return plan.upper(), int(months)
+    |                          ^^^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: 'abc'
+    | (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_parse_plan_no_crash(
+    |     s='GOLD-abc',
+    | )
+    +------------------------------------
+______________________ test_parse_plan_any_type_no_crash _______________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 41, in test_parse_plan_any_type_no_crash
+  |     @given(any_input)
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 43, in test_parse_plan_any_type_no_crash
+    |     check_plan_result(parse_plan(x))
+    |                       ^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 2, in parse_plan
+    |     plan, months = code.split('-')
+    |                    ^^^^^^^^^^^^^^^
+    | TypeError: a bytes-like object is required, not 'str'
+    | Failing test case: test_parse_plan_any_type_no_crash(
+    |     x=b'',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 43, in test_parse_plan_any_type_no_crash
+    |     check_plan_result(parse_plan(x))
+    |                       ^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 2, in parse_plan
+    |     plan, months = code.split('-')
+    |     ^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | Failing test case: test_parse_plan_any_type_no_crash(
+    |     x='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 43, in test_parse_plan_any_type_no_crash
+    |     check_plan_result(parse_plan(x))
+    |                       ^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 2, in parse_plan
+    |     plan, months = code.split('-')
+    |                    ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_parse_plan_any_type_no_crash(
+    |     x=None,
+    | )
+    +------------------------------------
+__________________________ test_parse_plan_near_valid __________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 47, in test_parse_plan_near_valid
+  |     @given(st.text(alphabet="GOLDsilver-0123456789 +.²٣\t", max_size=15))
+  |                    ^^^
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/.venv/lib/python3.11/site-packages/hypothesis/core.py", line 1730, in _raise_to_user
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 3 distinct failures in explicit examples. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 54, in test_parse_plan_near_valid
+    |     check_plan_result(parse_plan(s))
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 19, in check_plan_result
+    |     assert result is None or (
+    | AssertionError: assert (('', 12) is None or (True and 2 == 2 and True and True and False))
+    |  +  where True = isinstance(('', 12), tuple)
+    |  +  and   2 = len(('', 12))
+    |  +  and   True = isinstance('', str)
+    |  +  and   True = <built-in method isascii of str object at 0x101b38340>()
+    |  +    where <built-in method isascii of str object at 0x101b38340> = ''.isascii
+    |  +  and   False = <built-in method isalpha of str object at 0x101b38340>()
+    |  +    where <built-in method isalpha of str object at 0x101b38340> = ''.isalpha
+    | (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_parse_plan_near_valid(
+    |     s='-12',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 54, in test_parse_plan_near_valid
+    |     check_plan_result(parse_plan(s))
+    |                       ^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 2, in parse_plan
+    |     plan, months = code.split('-')
+    |     ^^^^^^^^^^^^
+    | ValueError: too many values to unpack (expected 2)
+    | Failing explicit example: test_parse_plan_near_valid(
+    |     s='GOLD--5',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 54, in test_parse_plan_near_valid
+    |     check_plan_result(parse_plan(s))
+    |                       ^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 3, in parse_plan
+    |     return plan.upper(), int(months)
+    |                          ^^^^^^^^^^^
+    | ValueError: invalid literal for int() with base 10: '²'
+    | (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_parse_plan_near_valid(
+    |     s='GOLD-²',
+    | )
+    +------------------------------------
+_________________________ test_calculate_bmi_no_crash __________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 72, in test_calculate_bmi_no_crash
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/.venv/lib/python3.11/site-packages/hypothesis/core.py", line 1730, in _raise_to_user
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 4 distinct failures in explicit examples. (4 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 82, in test_calculate_bmi_no_crash
+    |     check_bmi_result(calculate_bmi(s))
+    |                      ^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 6, in calculate_bmi
+    |     weight, height = data.split(',')
+    |                      ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing explicit example: test_calculate_bmi_no_crash(
+    |     s=None,
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 82, in test_calculate_bmi_no_crash
+    |     check_bmi_result(calculate_bmi(s))
+    |                      ^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 6, in calculate_bmi
+    |     weight, height = data.split(',')
+    |     ^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | (note: 2 other explicit examples also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_calculate_bmi_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 82, in test_calculate_bmi_no_crash
+    |     check_bmi_result(calculate_bmi(s))
+    |                      ^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 7, in calculate_bmi
+    |     return round(float(weight) / (float(height) ** 2), 1)
+    |                  ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+    | ZeroDivisionError: float division by zero
+    | Failing explicit example: test_calculate_bmi_no_crash(
+    |     s='70,0',
+    | )
+    +---------------- 4 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 82, in test_calculate_bmi_no_crash
+    |     check_bmi_result(calculate_bmi(s))
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 66, in check_bmi_result
+    |     assert result is None or (
+    | AssertionError: assert (-22.9 is None or (True and True and -22.9 >= 0))
+    |  +  where True = isinstance(-22.9, float)
+    |  +  and   True = <built-in function isfinite>(-22.9)
+    |  +    where <built-in function isfinite> = math.isfinite
+    | (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_calculate_bmi_no_crash(
+    |     s='-70,1.75',
+    | )
+    +------------------------------------
+_____________________ test_calculate_bmi_any_type_no_crash _____________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 86, in test_calculate_bmi_any_type_no_crash
+  |     @given(any_input)
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 88, in test_calculate_bmi_any_type_no_crash
+    |     check_bmi_result(calculate_bmi(x))
+    |                      ^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 6, in calculate_bmi
+    |     weight, height = data.split(',')
+    |                      ^^^^^^^^^^^^^^^
+    | TypeError: a bytes-like object is required, not 'str'
+    | Failing test case: test_calculate_bmi_any_type_no_crash(
+    |     x=b'',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 88, in test_calculate_bmi_any_type_no_crash
+    |     check_bmi_result(calculate_bmi(x))
+    |                      ^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 6, in calculate_bmi
+    |     weight, height = data.split(',')
+    |     ^^^^^^^^^^^^^^
+    | ValueError: not enough values to unpack (expected 2, got 1)
+    | Failing test case: test_calculate_bmi_any_type_no_crash(
+    |     x='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 88, in test_calculate_bmi_any_type_no_crash
+    |     check_bmi_result(calculate_bmi(x))
+    |                      ^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 6, in calculate_bmi
+    |     weight, height = data.split(',')
+    |                      ^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_calculate_bmi_any_type_no_crash(
+    |     x=None,
+    | )
+    +------------------------------------
+______________________ test_calculate_bmi_extreme_numbers ______________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 92, in test_calculate_bmi_extreme_numbers
+  |     @given(st.floats(allow_nan=True, allow_infinity=True),
+  |                    ^^^
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/.venv/lib/python3.11/site-packages/hypothesis/core.py", line 1730, in _raise_to_user
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 2 distinct failures in explicit examples. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 98, in test_calculate_bmi_extreme_numbers
+    |     check_bmi_result(calculate_bmi(f"{weight},{height}"))
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 7, in calculate_bmi
+    |     return round(float(weight) / (float(height) ** 2), 1)
+    |                  ~~~~~~~~~~~~~~^~~~~~~~~~~~~~~~~~~~~~
+    | ZeroDivisionError: float division by zero
+    | (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_calculate_bmi_extreme_numbers(
+    |     weight=70.0,
+    |     height=0.0,
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 98, in test_calculate_bmi_extreme_numbers
+    |     check_bmi_result(calculate_bmi(f"{weight},{height}"))
+    |                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 7, in calculate_bmi
+    |     return round(float(weight) / (float(height) ** 2), 1)
+    |                                   ~~~~~~~~~~~~~~^^~~
+    | OverflowError: (34, 'Result too large')
+    | Failing explicit example: test_calculate_bmi_extreme_numbers(
+    |     weight=70.0,
+    |     height=1e+200,
+    | )
+    +------------------------------------
+________________________ test_average_workout_no_crash _________________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 114, in test_average_workout_no_crash
+  |     @given(st.text() | st.none())
+  |                    ^^^
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/.venv/lib/python3.11/site-packages/hypothesis/core.py", line 1730, in _raise_to_user
+  |     raise the_error_hypothesis_found
+  | ExceptionGroup: Hypothesis found 4 distinct failures in explicit examples. (4 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 122, in test_average_workout_no_crash
+    |     check_average_result(average_workout(s))
+    |                          ^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 10, in average_workout
+    |     values = [int(m) for m in minutes.split()]
+    |                               ^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing explicit example: test_average_workout_no_crash(
+    |     s=None,
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 122, in test_average_workout_no_crash
+    |     check_average_result(average_workout(s))
+    |                          ^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 11, in average_workout
+    |     return sum(values) // len(values)
+    |            ~~~~~~~~~~~~^^~~~~~~~~~~~~
+    | ZeroDivisionError: integer division or modulo by zero
+    | (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_average_workout_no_crash(
+    |     s='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 122, in test_average_workout_no_crash
+    |     check_average_result(average_workout(s))
+    |                          ^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 10, in average_workout
+    |     values = [int(m) for m in minutes.split()]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 10, in <listcomp>
+    |     values = [int(m) for m in minutes.split()]
+    |               ^^^^^^
+    | ValueError: invalid literal for int() with base 10: '²'
+    | (note: 1 other explicit example also failed with this error; use Verbosity.verbose to view)
+    | Failing explicit example: test_average_workout_no_crash(
+    |     s='²',
+    | )
+    +---------------- 4 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 122, in test_average_workout_no_crash
+    |     check_average_result(average_workout(s))
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 110, in check_average_result
+    |     assert result is None or (isinstance(result, int) and result >= 0)
+    | AssertionError: assert (-35 is None or (True and -35 >= 0))
+    |  +  where True = isinstance(-35, int)
+    | Failing explicit example: test_average_workout_no_crash(
+    |     s='-30 -40',
+    | )
+    +------------------------------------
+____________________ test_average_workout_any_type_no_crash ____________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 126, in test_average_workout_any_type_no_crash
+  |     @given(any_input)
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 3 distinct failures. (3 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 128, in test_average_workout_any_type_no_crash
+    |     check_average_result(average_workout(x))
+    |                          ^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 10, in average_workout
+    |     values = [int(m) for m in minutes.split()]
+    |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 10, in <listcomp>
+    |     values = [int(m) for m in minutes.split()]
+    |               ^^^^^^
+    | ValueError: invalid literal for int() with base 10: ':'
+    | Failing test case: test_average_workout_any_type_no_crash(
+    |     x=':',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 128, in test_average_workout_any_type_no_crash
+    |     check_average_result(average_workout(x))
+    |                          ^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 11, in average_workout
+    |     return sum(values) // len(values)
+    |            ~~~~~~~~~~~~^^~~~~~~~~~~~~
+    | ZeroDivisionError: integer division or modulo by zero
+    | Failing test case: test_average_workout_any_type_no_crash(
+    |     x='',
+    | )
+    +---------------- 3 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 128, in test_average_workout_any_type_no_crash
+    |     check_average_result(average_workout(x))
+    |                          ^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 10, in average_workout
+    |     values = [int(m) for m in minutes.split()]
+    |                               ^^^^^^^^^^^^^
+    | AttributeError: 'NoneType' object has no attribute 'split'
+    | Failing test case: test_average_workout_any_type_no_crash(
+    |     x=None,
+    | )
+    +------------------------------------
+______________________ test_average_workout_integer_lists ______________________
+  + Exception Group Traceback (most recent call last):
+  |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 132, in test_average_workout_integer_lists
+  |     @given(st.lists(st.integers(-1000, 1000), max_size=10).map(lambda xs: " ".join(map(str, xs))))
+  |                    ^^^
+  | ExceptionGroup: Hypothesis found 2 distinct failures. (2 sub-exceptions)
+  +-+---------------- 1 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 134, in test_average_workout_integer_lists
+    |     check_average_result(average_workout(s))
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 110, in check_average_result
+    |     assert result is None or (isinstance(result, int) and result >= 0)
+    | AssertionError: assert (-1 is None or (True and -1 >= 0))
+    |  +  where True = isinstance(-1, int)
+    | Failing test case: test_average_workout_integer_lists(
+    |     s='-1',
+    | )
+    +---------------- 2 ----------------
+    | Traceback (most recent call last):
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/test_gym_membership.py", line 134, in test_average_workout_integer_lists
+    |     check_average_result(average_workout(s))
+    |                          ^^^^^^^^^^^^^^^^^^
+    |   File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 11, in average_workout
+    |     return sum(values) // len(values)
+    |            ~~~~~~~~~~~~^^~~~~~~~~~~~~
+    | ZeroDivisionError: integer division or modulo by zero
+    | Failing test case: test_average_workout_integer_lists(
+    |     s='',
+    | )
+    +------------------------------------
+=========================== short test summary info ============================
+FAILED test_gym_membership.py::test_parse_plan_no_crash - ExceptionGroup: Hyp...
+FAILED test_gym_membership.py::test_parse_plan_any_type_no_crash - ExceptionG...
+FAILED test_gym_membership.py::test_parse_plan_near_valid - ExceptionGroup: H...
+FAILED test_gym_membership.py::test_calculate_bmi_no_crash - ExceptionGroup: ...
+FAILED test_gym_membership.py::test_calculate_bmi_any_type_no_crash - Excepti...
+FAILED test_gym_membership.py::test_calculate_bmi_extreme_numbers - Exception...
+FAILED test_gym_membership.py::test_average_workout_no_crash - ExceptionGroup...
+FAILED test_gym_membership.py::test_average_workout_any_type_no_crash - Excep...
+FAILED test_gym_membership.py::test_average_workout_integer_lists - Exception...
+========================= 9 failed, 3 passed in 0.35s ==========================
+
+[exit code: 1]

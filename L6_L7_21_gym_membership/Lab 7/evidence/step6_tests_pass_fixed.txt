@@ -1,0 +1,25 @@
+$ python -m pytest test_gym_membership.py -v
+============================= test session starts ==============================
+platform darwin -- Python 3.11.15, pytest-9.2.0, pluggy-1.7.0 -- /Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/.venv/bin/python
+cachedir: .pytest_cache
+hypothesis profile 'default'
+rootdir: /Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7
+plugins: hypothesis-6.170.15
+collecting ... collected 12 items
+
+test_gym_membership.py::test_parse_plan_no_crash PASSED                  [  8%]
+test_gym_membership.py::test_parse_plan_any_type_no_crash PASSED         [ 16%]
+test_gym_membership.py::test_parse_plan_near_valid PASSED                [ 25%]
+test_gym_membership.py::test_parse_plan_round_trip PASSED                [ 33%]
+test_gym_membership.py::test_calculate_bmi_no_crash PASSED               [ 41%]
+test_gym_membership.py::test_calculate_bmi_any_type_no_crash PASSED      [ 50%]
+test_gym_membership.py::test_calculate_bmi_extreme_numbers PASSED        [ 58%]
+test_gym_membership.py::test_calculate_bmi_matches_formula PASSED        [ 66%]
+test_gym_membership.py::test_average_workout_no_crash PASSED             [ 75%]
+test_gym_membership.py::test_average_workout_any_type_no_crash PASSED    [ 83%]
+test_gym_membership.py::test_average_workout_integer_lists PASSED        [ 91%]
+test_gym_membership.py::test_average_workout_bounds PASSED               [100%]
+
+============================== 12 passed in 0.81s ==============================
+
+[exit code: 0]

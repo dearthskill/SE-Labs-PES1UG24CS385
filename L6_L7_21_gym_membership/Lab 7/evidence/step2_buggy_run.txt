@@ -1,0 +1,15 @@
+$ python gym_membership.py
+[stdin: GOLD12]
+==== Running parse_plan ====
+Enter a plan code (e.g. GOLD-12): Traceback (most recent call last):
+  File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 30, in <module>
+    main()
+  File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 16, in main
+    result = parse_plan(user_input)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/rohitsmac/SE-Labs-PES1UG24CS385.git/L6_L7_21_gym_membership/Lab 7/gym_membership.py", line 2, in parse_plan
+    plan, months = code.split('-')
+    ^^^^^^^^^^^^
+ValueError: not enough values to unpack (expected 2, got 1)
+
+[exit code: 1]

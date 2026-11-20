@@ -1,0 +1,25 @@
+$ python gym_membership.py
+[stdin: GOLD12 | 70,0 | 45 sixty 30]
+==== Running parse_plan ====
+Enter a plan code (e.g. GOLD-12): Plan and Months: Invalid input
+
+==== Running calculate_bmi ====
+Enter weight and height (e.g. 70,1.75): BMI: Invalid input
+
+==== Running average_workout ====
+Enter workout minutes separated by spaces (e.g. 45 60 30): Average Minutes: Invalid input
+
+[exit code: 0]
+
+$ python gym_membership.py
+[stdin: GOLD-12 | 70,1.75 | 45 60 30]
+==== Running parse_plan ====
+Enter a plan code (e.g. GOLD-12): Plan and Months: ('GOLD', 12)
+
+==== Running calculate_bmi ====
+Enter weight and height (e.g. 70,1.75): BMI: 22.9
+
+==== Running average_workout ====
+Enter workout minutes separated by spaces (e.g. 45 60 30): Average Minutes: 45
+
+[exit code: 0]
